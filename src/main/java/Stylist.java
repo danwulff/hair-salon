@@ -28,11 +28,22 @@ public class Stylist {
   }
 
   public void update(String newName) {
-
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", newName)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
   }
 
   public void delete() {
-    
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stylists WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
   }
 
   public List<Client> getClients() {
