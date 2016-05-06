@@ -4,6 +4,7 @@ import org.sql2o.*;
 public class Client {
   private int id;
   private String name;
+  private int stylist_id;
 
   public Client(String name) {
     this.name = name;
@@ -31,6 +32,16 @@ public class Client {
     String sql = "SELECT id, name FROM clients";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
+
+  public static Client find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE id=:id";
+      Client client = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Client.class);
+      return client;
     }
   }
 

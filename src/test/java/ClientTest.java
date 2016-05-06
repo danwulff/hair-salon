@@ -45,29 +45,29 @@ public class ClientTest {
   }
 
   @Test
-  public void save_savesAllClientsCorrectly_true() {
+  public void save_savesClientObjectCorrectly_true() {
     Client myClient = new Client("Stephen");
     myClient.save();
     assertTrue(Client.all().get(0).equals(myClient));
   }
 
-  /*@Test
-  public void save_assignsIdToObject() {
-    Client myClient = new Client("Mow the lawn", 1);
+  @Test
+  public void save_assignsIdToObject_Id() {
+    Client myClient = new Client("Stephen");
     myClient.save();
     Client savedClient = Client.all().get(0);
     assertEquals(myClient.getId(), savedClient.getId());
   }
 
   @Test
-  public void find_findsClientsInDatabase_True() {
-    Client myClient = new Client("Mow the lawn", 1);
+  public void find_findsClientInDatabase_True() {
+    Client myClient = new Client("Stephen");
     myClient.save();
     Client savedClient = Client.find(myClient.getId());
     assertTrue(myClient.equals(savedClient));
   }
 
-  @Test
+  /*@Test
   public void save_savesCategoryIdIntoDB_true() {
     Category myCategory = new Category("Household chores");
     myCategory.save();
