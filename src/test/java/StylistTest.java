@@ -69,6 +69,23 @@ public class StylistTest {
   }
 
   @Test
+  public void update_updatesStylistName_true() {
+    Stylist myStylist = new Stylist("Sarah");
+    myStylist.save();
+    myStylist.update("Bob");
+    assertEquals("Bob", Stylist.find(myStylist.getId()).getName());
+  }
+
+  @Test
+  public void delete_deletesStylist_true() {
+    Stylist myStylist = new Stylist("Sarah");
+    myStylist.save();
+    int myStylistId = myStylist.getId();
+    myStylist.delete();
+    assertEquals(null, Stylist.find(myStylistId));
+  }
+
+  @Test
   public void getClients_retrievesAllClientsFromDatabase_clientsList() {
     Stylist myStylist = new Stylist("Sarah");
     myStylist.save();

@@ -67,13 +67,30 @@ public class ClientTest {
     assertTrue(myClient.equals(savedClient));
   }
 
-  /*@Test
-  public void save_savesCategoryIdIntoDB_true() {
-    Category myCategory = new Category("Household chores");
-    myCategory.save();
-    Client myClient = new Client("Mow the lawn", myCategory.getId());
+  @Test
+  public void update_updatesClientName_true() {
+    Client myClient = new Client("Stephen", 1);
+    myClient.save();
+    myClient.update("Dave");
+    assertEquals("Dave", Client.find(myClient.getId()).getName());
+  }
+
+  @Test
+  public void delete_deletesClient_true() {
+    Client myClient = new Client("Stephen", 1);
+    myClient.save();
+    int myClientId = myClient.getId();
+    myClient.delete();
+    assertEquals(null, Client.find(myClientId));
+  }
+
+  @Test
+  public void save_savesStylistIdIntoDB_true() {
+    Stylist myStylist = new Stylist("Sarah");
+    myStylist.save();
+    Client myClient = new Client("Stephen", myStylist.getId());
     myClient.save();
     Client savedClient = Client.find(myClient.getId());
-    assertEquals(savedClient.getCategoryId(), myCategory.getId());
-  }*/
+    assertEquals(savedClient.getStylistId(), myStylist.getId());
+  }
 }

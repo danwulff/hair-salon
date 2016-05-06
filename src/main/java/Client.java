@@ -34,6 +34,14 @@ public class Client {
     }
   }
 
+  public void update(String newName) {
+
+  }
+
+  public void delete() {
+
+  }
+
   public static List<Client> all() {
     String sql = "SELECT id, name, stylist_id FROM clients";
     try(Connection con = DB.sql2o.open()) {
