@@ -22,13 +22,13 @@ public class ClientTest {
 
   @Test
   public void Client_instantiatesCorrectly_true(){
-    Client myClient = new Client("Stephen");
+    Client myClient = new Client("Stephen", 1);
     assertEquals(true, myClient instanceof Client);
   }
 
   @Test
   public void getName_clientInstantiatesWithName_String(){
-    Client myClient = new Client("Stephen");
+    Client myClient = new Client("Stephen", 1);
     assertEquals("Stephen", myClient.getName());
   }
 
@@ -39,21 +39,21 @@ public class ClientTest {
 
   @Test
   public void equals_returnsTrueIfNameAndIdAreTheSame_true() {
-    Client firstClient = new Client("Stephen");
-    Client secondClient = new Client("Stephen");
+    Client firstClient = new Client("Stephen", 1);
+    Client secondClient = new Client("Stephen", 1);
     assertTrue(firstClient.equals(secondClient));
   }
 
   @Test
   public void save_savesClientObjectCorrectly_true() {
-    Client myClient = new Client("Stephen");
+    Client myClient = new Client("Stephen", 1);
     myClient.save();
     assertTrue(Client.all().get(0).equals(myClient));
   }
 
   @Test
   public void save_assignsIdToObject_Id() {
-    Client myClient = new Client("Stephen");
+    Client myClient = new Client("Stephen", 1);
     myClient.save();
     Client savedClient = Client.all().get(0);
     assertEquals(myClient.getId(), savedClient.getId());
@@ -61,7 +61,7 @@ public class ClientTest {
 
   @Test
   public void find_findsClientInDatabase_True() {
-    Client myClient = new Client("Stephen");
+    Client myClient = new Client("Stephen", 1);
     myClient.save();
     Client savedClient = Client.find(myClient.getId());
     assertTrue(myClient.equals(savedClient));
