@@ -19,4 +19,61 @@ public class ClientTest {
       con.createQuery(deleteStylistsQuery).executeUpdate();
     }
   }
+
+  @Test
+  public void Client_instantiatesCorrectly_true(){
+    Client myClient = new Client("Stephen");
+    assertEquals(true, myClient instanceof Client);
+  }
+
+  @Test
+  public void getName_clientInstantiatesWithName_String(){
+    Client myClient = new Client("Stephen");
+    assertEquals("Stephen", myClient.getName());
+  }
+
+  @Test
+  public void all_emptyAtFirst_0() {
+    assertEquals(0, Client.all().size());
+  }
+
+  /*@Test
+  public void equals_returnsTrueIfNamesAreTheSame_true() {
+    Client firstClient = new Client("Stephen");
+    Client secondClient = new Client("Stephen");
+    assertTrue(firstClient.equals(secondClient));
+  }
+
+  @Test
+  public void save_returns() {
+    Client myClient = new Client("Stephen");
+    myClient.save();
+    assertTrue(Client.all().get(0).equals(myClient));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Client myClient = new Client("Mow the lawn", 1);
+    myClient.save();
+    Client savedClient = Client.all().get(0);
+    assertEquals(myClient.getId(), savedClient.getId());
+  }
+
+  @Test
+  public void find_findsClientsInDatabase_True() {
+    Client myClient = new Client("Mow the lawn", 1);
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertTrue(myClient.equals(savedClient));
+  }
+
+  @Test
+  public void save_savesCategoryIdIntoDB_true() {
+    Category myCategory = new Category("Household chores");
+    myCategory.save();
+    Client myClient = new Client("Mow the lawn", myCategory.getId());
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertEquals(savedClient.getCategoryId(), myCategory.getId());
+  }*/
 }
