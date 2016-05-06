@@ -37,21 +37,21 @@ public class ClientTest {
     assertEquals(0, Client.all().size());
   }
 
-  /*@Test
-  public void equals_returnsTrueIfNamesAreTheSame_true() {
+  @Test
+  public void equals_returnsTrueIfNameAndIdAreTheSame_true() {
     Client firstClient = new Client("Stephen");
     Client secondClient = new Client("Stephen");
     assertTrue(firstClient.equals(secondClient));
   }
 
   @Test
-  public void save_returns() {
+  public void save_savesAllClientsCorrectly_true() {
     Client myClient = new Client("Stephen");
     myClient.save();
     assertTrue(Client.all().get(0).equals(myClient));
   }
 
-  @Test
+  /*@Test
   public void save_assignsIdToObject() {
     Client myClient = new Client("Mow the lawn", 1);
     myClient.save();
