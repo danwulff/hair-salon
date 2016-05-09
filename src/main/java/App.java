@@ -40,5 +40,51 @@ public class App {
       response.redirect("/stylists");
       return null;
     });
+
+    //list all stylists
+    get("/stylists/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      model.put("stylist", stylist);
+      model.put("clients", stylist.getClients());
+      model.put("template", "templates/stylist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    //individual stylist edit form
+    get("/stylists/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    //change stylist name
+    post("/stylists/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int stylistId = Integer.parseInt(request.params(":id"));
+      String name = request.queryParams("name");
+
+      Stylist stylist = Stylist.find(stylistId);
+      stylist.update(name);
+
+      model.put("stylist", stylist);
+
+      response.redirect("/stylists/" + stylistId);
+      return null;
+    });
+
+    //delete stylist
+    post("/stylists/:id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int stylistId = Integer.parseInt(request.params(":id"));
+
+      Stylist stylist = Stylist.find(stylistId);
+      stylist.delete();
+
+      response.redirect("/stylists/");
+      return null;
+    });
   }
 }

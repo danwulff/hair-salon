@@ -1,0 +1,13 @@
+<h2>Change $stylist.getName()'s name</h2>
+
+<form action="/stylists/$stylist.getId()/edit" method="post">
+  <input type="text" id="name" name="name">
+  <button type="submit" name="button">Change name</button>
+</form>
+
+<form action='/stylists/$stylist.getId()/delete' method='post'>
+  <input id="stylist_id" name="stylist_id" type="hidden" value="$stylist.getId()">
+  <button type="submit" class="btn btn-info">Delete this stylist</button>
+</form>
+
+<h3><a href="/stylists/$stylist.getId()">Back</a></h3>
