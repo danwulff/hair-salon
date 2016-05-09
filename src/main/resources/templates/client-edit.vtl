@@ -1,0 +1,13 @@
+<h2>Change $client.getName()'s name</h2>
+
+<form action="/stylists/$client.getStylistId()/clients/$client.getId/edit" method="post">
+  <input type="text" id="name" name="name">
+  <button type="submit" name="button">Change name</button>
+</form>
+
+<form action='/stylists/$client.getStylistId()/clients/$client.getId/delete' method='post'>
+  <input id="client_id" name="client_id" type="hidden" value="$client.getId()">
+  <button type="submit" class="btn btn-info">Delete this client</button>
+</form>
+
+<h3><a href="/stylists/$client.getStylistId()/clients/$client.getId">Back</a></h3>

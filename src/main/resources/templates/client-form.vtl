@@ -1,0 +1,9 @@
+<h2>Create a new client under $stylist.getName()</h2>
+
+<form action="/stylists/$stylist.getId()/clients/new" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="$stylist.getId()">
+  <input type="text" id="name" name="name">
+  <button type="submit" name="button">Create new client</button>
+</form>
+
+<h3><a href="/stylists/$stylist.getId()">Back to $stylist.getName()</a></h3>
