@@ -13,10 +13,12 @@ _This is an example of java use, specifically SQL database use with one-to-many 
 * _Be sure to place all provided files/folders as seen in the repository into a single directory_
 * _Make sure the version 2.12 or new of gradle is installed on your system (entering "gradle -v" into the command line should give you the version of the installed gradle system)_
 * _Use postgreSQL to create an sql database using the following commands:_
-* _CREATE DATABASE hair_salon;_
-* _CREATE TABLE stylists(id serial PRIMARY KEY, name varchar);_
-* _CREATE TABLE clients(id serial PRIMARY KEY, name varchar, stylist_id int);_
-* _(if running gradle tests) CREATE DATABASE hair_salon_test FROM TEMPLATE hair_salon;_
+  * _Run posgres in a terminal: $ postgres_
+  * _In another terminal open a postgreSQL front-end: $ psql_
+  * _# CREATE DATABASE hair_salon;_
+  * _# CREATE TABLE stylists(id serial PRIMARY KEY, name varchar);_
+  * _# CREATE TABLE clients(id serial PRIMARY KEY, name varchar, stylist_id int);_
+  * _(if running gradle tests) # CREATE DATABASE hair_salon_test FROM TEMPLATE hair_salon;_
 * _To view the webpage, change the command line directory to be the root of the project folder._
 * _type "gradle run" into the command line._
 * _Open a browser and browse to http://localhost:4567/_
